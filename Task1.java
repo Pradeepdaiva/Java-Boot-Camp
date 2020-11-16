@@ -13,6 +13,7 @@ public class Task1 {
 	   System.out.println("Int: "+num);
 	   sc.close();
 	   scan.close();
+		
 	}
 
 }
