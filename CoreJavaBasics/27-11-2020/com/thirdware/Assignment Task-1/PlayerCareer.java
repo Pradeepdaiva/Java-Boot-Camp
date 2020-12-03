@@ -28,6 +28,26 @@ public class PlayerCareer {
 		return matchesPlayed;
 	}
 
+	public void setMatchesPlayed(int matchesPlayed) {
+		this.matchesPlayed = matchesPlayed;
+	}
+
+	public void setMatchesWon(int matchesWon) {
+		this.matchesWon = matchesWon;
+	}
+
+	public void setBestRanking(int bestRanking) {
+		this.bestRanking = bestRanking;
+	}
+
+	public void setPreferredCourt(String preferredCourt) {
+		this.preferredCourt = preferredCourt;
+	}
+
+	public void setLastFought(int lastFought) {
+		this.lastFought = lastFought;
+	}
+
 	public int getMatchesWon() {
 		return matchesWon;
 	}
