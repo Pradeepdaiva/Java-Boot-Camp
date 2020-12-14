@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<util:set id="courses">
+		<bean id="course1" class="com.thirdware.testcase2.Courses">
+			<property name="courseId" value="1"></property>
+			<property name="courseName" value="Java"></property>
+			<property name="targetScore">
+				<value>60</value>
+			</property>
+		</bean>
+		<bean id="course2" class="com.thirdware.testcase2.Courses">
+			<property name="courseId" value="2"></property>
+			<property name="courseName" value="JavaScript"></property>
+			<property name="targetScore" value="70"></property>
+		</bean>
+		<bean id="course3" class="com.thirdware.testcase2.Courses">
+			<property name="courseId" value="3"></property>
+			<property name="courseName" value="React"></property>
+			<property name="targetScore" value="60"></property>
+		</bean>
+		<bean id="course4" class="com.thirdware.testcase2.Courses">
+			<property name="courseId" value="4"></property>
+			<property name="courseName" value="C#"></property>
+			<property name="targetScore" value="50"></property>
+		</bean>
+		<bean id="course5" class="com.thirdware.testcase2.Courses">
+			<property name="courseId" value="5"></property>
+			<property name="courseName" value="Mathematics"></property>
+			<property name="targetScore" value="100"></property>
+		</bean>
+		<bean id="course6" class="com.thirdware.testcase2.Courses">
+			<property name="courseId" value="6"></property>
+			<property name="courseName" value="Hypernet"></property>
+			<property name="targetScore" value="55"></property>
+		</bean>
+		<bean id="course7" class="com.thirdware.testcase2.Courses">
+			<property name="courseId" value="7"></property>
+			<property name="courseName" value="C++"></property>
+			<property name="targetScore" value="50"></property>
+		</bean>
+		<bean id="course8" class="com.thirdware.testcase2.Courses">
+			<property name="courseId" value="8"></property>
+			<property name="courseName" value="Spring boot"></property>
+			<property name="targetScore" value="70"></property>
+		</bean>
+		<bean id="course9" class="com.thirdware.testcase2.Courses">
+			<property name="courseId" value="9"></property>
+			<property name="courseName" value="Angular"></property>
+			<property name="targetScore" value="70"></property>
+		</bean>
+		<bean id="course10" class="com.thirdware.testcase2.Courses">
+			<property name="courseId" value="10"></property>
+			<property name="courseName" value="Python"></property>
+			<property name="targetScore" value="65"></property>
+		</bean>
+	</util:set>
+	<bean id="makingList" class="com.thirdware.testcase2.MakingList">
+		<property name="list">
+			<list>
+				<ref bean="stu1" />
+				<ref bean="stu2" />
+				<ref bean="stu3" />
+				<ref bean="stu4" />
+				<ref bean="stu5" />
+				<ref bean="stu6" />
+				<ref bean="stu7" />
+				<ref bean="stu8" />
+				<ref bean="stu9" />
+				<ref bean="stu10" />
+			</list>
+		</property>
+	</bean>
+	<bean id="stu1" class="com.thirdware.testcase2.Student">
+		<constructor-arg name="studentId" value="1" />
+		<constructor-arg name="studentName" value="Pradeep" />
+		<constructor-arg name="marks">
+			<value>70</value>
+		</constructor-arg>
+		<constructor-arg name="course">
+			<value>#{courses[0]}</value>
+		</constructor-arg>
+		<property name="result">
+			<!-- <value>"#{stu.marks[0] ge course1.targetScore ? 'PASS': 'FAIL'}" 
+				</value> -->
+			<value>#{stu1.marks ge stu1.course.targetScore ? 'PASS': 'FAIL'}
+			</value>
+
+		</property>
+	</bean>
+
+	<bean id="stu2" class="com.thirdware.testcase2.Student">
+		<constructor-arg name="studentId" value="2" />
+		<constructor-arg name="studentName" value="Ravi" />
+		<constructor-arg name="marks">
+			<value>60</value>
+		</constructor-arg>
+		<constructor-arg name="course">
+			<value>#{courses[1]}</value>
+		</constructor-arg>
+		<property name="result">
+			<value>#{stu2.marks ge stu2.course.targetScore ? 'PASS': 'FAIL'}
+			</value>
+		</property>
+	</bean>
+	<bean id="stu3" class="com.thirdware.testcase2.Student">
+		<constructor-arg name="studentId" value="3" />
+		<constructor-arg name="studentName" value="Prakash" />
+		<constructor-arg name="marks">
+			<value>80</value>
+		</constructor-arg>
+		<constructor-arg name="course">
+			<value>#{courses[2]}</value>
+		</constructor-arg>
+		<property name="result">
+			<!-- <value>"#{stu.marks[0] ge course1.targetScore ? 'PASS': 'FAIL'}" 
+				</value> -->
+			<value>#{stu3.marks ge stu3.course.targetScore ? 'PASS': 'FAIL'}
+			</value>
+		</property>
+	</bean>
+	<bean id="stu4" class="com.thirdware.testcase2.Student">
+		<constructor-arg name="studentId" value="4" />
+		<constructor-arg name="studentName" value="Naveen" />
+		<constructor-arg name="marks">
+			<value>90</value>
+		</constructor-arg>
+		<constructor-arg name="course">
+			<value>#{courses[3]}</value>
+		</constructor-arg>
+		<property name="result">
+			<!-- <value>"#{stu.marks[0] ge course1.targetScore ? 'PASS': 'FAIL'}" 
+				</value> -->
+			<value>#{stu4.marks ge stu4.course.targetScore ? 'PASS': 'FAIL'}
+			</value>
+		</property>
+	</bean>
+	<bean id="stu5" class="com.thirdware.testcase2.Student">
+		<constructor-arg name="studentId" value="5" />
+		<constructor-arg name="studentName" value="Ragul" />
+		<constructor-arg name="marks">
+			<value>75</value>
+		</constructor-arg>
+		<constructor-arg name="course">
+			<value>#{courses[4]}</value>
+		</constructor-arg>
+		<property name="result">
+			<!-- <value>"#{stu.marks[0] ge course1.targetScore ? 'PASS': 'FAIL'}" 
+				</value> -->
+			<value>#{stu5.marks ge stu5.course.targetScore/10 ? 'PASS': 'FAIL'}
+			</value>
+		</property>
+	</bean>
+	<bean id="stu6" class="com.thirdware.testcase2.Student">
+		<constructor-arg name="studentId" value="6" />
+		<constructor-arg name="studentName" value="Nirmal" />
+		<constructor-arg name="marks">
+			<value>95</value>
+		</constructor-arg>
+		<constructor-arg name="course">
+			<value>#{courses[5]}</value>
+		</constructor-arg>
+		<property name="result">
+			<!-- <value>"#{stu.marks[0] ge course1.targetScore ? 'PASS': 'FAIL'}" 
+				</value> -->
+			<value>#{stu6.marks ge stu6.course.targetScore ? 'PASS': 'FAIL'}
+			</value>
+		</property>
+	</bean>
+	<bean id="stu7" class="com.thirdware.testcase2.Student">
+		<constructor-arg name="studentId" value="7" />
+		<constructor-arg name="studentName" value="Joel" />
+		<constructor-arg name="marks">
+			<value>100</value>
+		</constructor-arg>
+		<constructor-arg name="course">
+			<value>#{courses[6]}</value>
+		</constructor-arg>
+		<property name="result">
+			<!-- <value>"#{stu.marks[0] ge course1.targetScore ? 'PASS': 'FAIL'}" 
+				</value> -->
+			<value>#{stu7.marks ge stu7.course.targetScore ? 'PASS': 'FAIL'}
+			</value>
+		</property>
+	</bean>
+	<bean id="stu8" class="com.thirdware.testcase2.Student">
+		<constructor-arg name="studentId" value="8" />
+		<constructor-arg name="studentName" value="Arun" />
+		<constructor-arg name="marks">
+			<value>80</value>
+		</constructor-arg>
+		<constructor-arg name="course">
+			<value>#{courses[7]}</value>
+		</constructor-arg>
+		<property name="result">
+			<!-- <value>"#{stu.marks[0] ge course1.targetScore ? 'PASS': 'FAIL'}" 
+				</value> -->
+			<value>#{stu8.marks ge stu8.course.targetScore ? 'PASS': 'FAIL'}
+			</value>
+		</property>
+	</bean>
+	<bean id="stu9" class="com.thirdware.testcase2.Student">
+		<constructor-arg name="studentId" value="9" />
+		<constructor-arg name="studentName" value="Rajesh" />
+		<constructor-arg name="marks">
+			<value>65</value>
+		</constructor-arg>
+		<constructor-arg name="course">
+			<value>#{courses[8]}</value>
+		</constructor-arg>
+		<property name="result">
+			<!-- <value>"#{stu.marks[0] ge course1.targetScore ? 'PASS': 'FAIL'}" 
+				</value> -->
+			<value>#{stu9.marks ge stu9.course.targetScore ? 'PASS': 'FAIL'}
+			</value>
+		</property>
+	</bean>
+	<bean id="stu10" class="com.thirdware.testcase2.Student">
+		<constructor-arg name="studentId" value="10" />
+		<constructor-arg name="studentName" value="Lokesh" />
+		<constructor-arg name="marks">
+			<value>65</value>
+		</constructor-arg>
+		<constructor-arg name="course">
+			<value>#{courses[9]}</value>
+		</constructor-arg>
+		<property name="result">
+			<!-- <value>"#{stu.marks[0] ge course1.targetScore ? 'PASS': 'FAIL'}" 
+				</value> -->
+			<value>#{stu10.marks ge stu10.course.targetScore ? 'PASS': 'FAIL'}
+			</value>
+		</property>
+	</bean>
+</beans>
